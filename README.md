@@ -5,17 +5,17 @@
 #计算属性的使用需要注意
 
 # 简易留言板--主要是vue.set，vm.$set方法的运用
-![如下图]('/imgs/1.jpg')
+![如下图](https://github.com/leejungyong/basis-Of-Vue/blob/master/imgs/1.jpg)
 
 
 #筛选商品
-![如下图]('/imgs/2.jpg')
+![如下图](https://github.com/leejungyong/basis-Of-Vue/blob/master/imgs/2.jpg)
 
 #自动展开收缩的列表
-![如下图]('/imgs/3.jpg')
+![如下图](https://github.com/leejungyong/basis-Of-Vue/blob/master/imgs/3.jpg)
 
 #百度音乐--复选框的问题
-![如下图]('/imgs/4.jpg')
+![如下图](https://github.com/leejungyong/basis-Of-Vue/blob/master/imgs/4.jpg)
     计算属性的问题:实现复选框，全选框的响应
     1.全选框v-model一个计算属性，该计算属性判断了一些复选框的value值，是否全部为true（用every方法实现）
         当全部为true时，全选框的value值为true；
