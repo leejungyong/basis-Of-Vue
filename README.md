@@ -3,8 +3,20 @@
 #当在模板中给事件的方法传参，需要手动使用$event把事件对象传给方法
 
 #计算属性的使用需要注意
+    ```bash
+    //调用Vue静态方法set
+        //语法：Vue.set(target,prop,value)
+      //Vue.set(vm.miaov,'ketang','我是新加的');
+     
+    //调用实例上的方法，$set
+   // vm.$set(vm.miaov,'ketang','我是新加的')
 
-# 简易留言板--主要是vue.set，vm.$set方法的运用
+    //改写属性的值，重新赋值
+    //vm.miaov={ketang:'新的'}
+  // vm.miaov= Object.assign({},vm.miaov,{ketang:'新的'});
+    ```
+
+##简易留言板--主要是vue.set，vm.$set方法的运用
 
 ![如下图](https://github.com/leejungyong/basis-Of-Vue/blob/master/imgs/1.jpg)
 
