@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{reverserMessage}}</p>
+        <p>{{newList}}</p>
+    </div>
+
+    <script>
+    let vm=new Vue({
+        el:'#app',
+        data () {
+         return {
+         message:'miaov',
+         list:[1,2,3,4]
+         }
+ },
+
+ computed: {
+     //把对处理数据的逻辑抽离在计算属性中，使得模板更加易读
+     //计算属性是一个对象,挂载实例上
+     //计算完后结果缓存，可在模板中重复使用
+     //依赖于message，当message发生变化，会重新计算
+     reverserMessage(){
+         return this.message.split('').reverse().join('');
+     },
+
+     newList(){
+         return this.list.map(item=>item*2).filter(item=>item<10)
+     }
+ }
+})
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+</head>
+<body>
+    <div id="app">
+    <button v-on:click="fn">测试事件</button>
+    <a @click.prevent href="https://study.miaov.com/study">miaov</a>
+    
+        <div @click.capture="demo1">
+            demo1
+            <div @click="demo2">demo2
+                <div @click.stop="demo3">demo3</div>
+            </div>
+        </div>
+
+        <input type="text" @keyup.enter="uphandle">
+</div>
+    <script>
+    var vm=new Vue({
+
+        el:'#app',
+        data () {
+            return {
+               message:'hello' ,
+               message2:' <div>hello</div>'
+            }
+        },
+        methods: {
+            fn(){
+                alert(11);
+            },
+            demo1(){
+                console.log("demo1");
+            },
+            demo2(){
+                console.log("demo2");
+            },
+            demo3(){
+                console.log("demo3");
+            },
+
+            uphandle(ev){
+                console.log(ev.keyCode);
+            }
+        
+        }
+    })
+    </script>
+</body>
+</html>
+
+<!--
+    事件修饰符:
+
+    1. @click.prevent阻止默认行为，比如阻止a标签跳转
+    2. @click.stop  阻止冒泡
+    3. @click.capture 事件捕获，先输出demo1 再输出demo3
+    4. 捕获是从window-document-html-body-具体处罚元素
+    5. 捕获完后冒泡回传
+    6..once只触发一次
+    7. .self只能点自己的时候触发，点别人冒泡也不触发（判断时间源）
+
+    8.按键修饰符：
+        @keyup.enter按键时触发
+-->

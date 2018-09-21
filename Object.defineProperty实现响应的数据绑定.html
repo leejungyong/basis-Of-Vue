@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h3 id="title"></h3>
+
+        <button id="btn">改变</button>
+  
+    </div>
+
+    <script>
+
+        var data={
+            title:'新闻',
+            miaov:1
+        }
+        //使用数据时，要先对数据进行劫持（代理）
+        //使用Object.defineProperty劫持数据，把属性转成访问器方式
+        /*
+            getter获取属性触发
+            setter设置属性触发
+        */
+        
+        //Object.defineProperty
+        //定义属性，也可以在原有的属性上描述
+        Object.defineProperty(data,'miaov',{
+            value:'ketang'
+        })
+
+
+        Object.defineProperty(data,'title',{
+            value:'重新定义',
+            configurable:false, //设置是否能被删除
+            enumerable:false,   // 设置不可枚举
+            writable:false      //设置不允许改写
+        })
+        data.title='数据变了';  //不会改变
+         delete data.title;   //不会被删除
+
+            var val='新值'
+         Object.defineProperty(data,'title',{
+             get(){//访问器
+                return val;
+             },
+             set(newValue){
+                 val=newValue;
+             }
+         })
+
+
+        observer(data);
+         function observer(obj){
+                Object.keys(obj).forEach(item=>{
+                    defineReac(obj,item,obj[item])
+                })
+         }
+
+         function defineReac(obj,key,value){
+                Object.defineProperty(obj,key,{
+                    get(){
+                        return value;
+                    },
+                    set(newValue){
+                        value=newValue;
+                        title.innerHTML=newValue;
+                    }
+                })
+         }
+        var title=document.getElementById('title');
+        var btn=document.getElementById('btn');
+        title.innerHTML=data.title;
+
+        btn.onclick=function(){
+            data.title='数据变了';
+            title.innerHTML=data.title;
+        }
+
+
+    </script>
+</body>
+
+</html>

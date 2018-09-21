@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网页换肤</title>
+    <script>
+    window.onload=function(){
+        
+    }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="skin">
+            <li id="red" title="红色" class="current"></li>
+            <li id="green" title="绿色"></li>
+            <li id="black" title="黑色"></li>
+        </ul><br>
+
+        <ul id="nav">
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">体育</a></li>
+            <li><a href="#">电影</a></li>
+            <li><a href="#">音乐</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<style>
+    #outer{
+        width: 500px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    li{list-style-type:none;}
+    a{ text-decoration: none; }
+    a:hover{text-decoration: underline;}
+    body,ul,li{margin:0;padding:0;}
+    html,body{height:100%;}
+    body{font:12px/1.5 Tahoma;}
+    #skin{
+       margin: 10px 0;
+    }
+    #skin li{
+        float: left;
+        width: 6px;
+        height: 6px;
+        margin-right: 10px;
+        cursor: pointer;
+        border-width: 4px;
+        border-style: solid;
+      
+    }
+
+    #skin li.current{
+        background: #fff;
+    }
+    #nav{
+        border: 1px solid #fff;
+    }
+    #nav li{
+        float: left;
+        width:82px;
+        line-height: 25px;
+        text-align: center;
+        border-right: 1px solid #fff;
+    }
+    #nav li a{color: #fff;}
+#red{border-color:red;background:red;}
+#green{border-color:green;background:green;}
+#black{border-color:black;background:black;}
+</style>

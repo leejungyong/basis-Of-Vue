@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录界面</title>
+</head>
+<script type="text/javascript" language="javascript">
+    try {
+        if (window.orientation == 90 || window.orientation == -90) {
+            document.documentElement.style.fontSize = (document.documentElement.clientHeight / 6.4) + "px";
+        }
+        else {
+            document.documentElement.style.fontSize = (document.documentElement.clientWidth / 6.4) + "px";
+        }
+    }
+    catch (e) { }
+
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?b7220d8eb79c5b3dde020ac70bb82b47";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+</script>
+<body>
+        <div id="hello" style="height:100%;display:block;">
+                <div class="padding_style">
+                  <form>
+                    <div class="content">
+                      <div class="login_box">
+                        <div class="page_logo"></div>
+                        <div class="login_input">
+                          <input type="text" class="input_style" placeholder="输入手机号" maxlength="11">
+                        </div>
+                        <div class="login_input">
+                          <input type="password" class="input_style" placeholder="输入密码" maxlength="32">
+                        </div>
+                        <div class="login_a clearfix">
+                          <a id="ChangeMode" href="">账号登录</a>
+                          <a class="TelRes fr" href="">手机号重置密码</a>
+                        </div>
+                        <div>
+                          <input type="button" onclick="formSubmit" class="btn" value="登录">
+                        </div>
+                        <div>
+                          <input type="button" class="btn" value="立即开通，免费体验" readonly="readonly" onclick="registerPersonal">
+                        </div>  
+            
+                      </div>
+            
+                    </div>
+            
+                  </form>
+                </div>
+              </div>
+</body>
+</html>
+
+<style>
+@media screen and (max-width: 321px) {
+  .content,
+  .container,
+  .input_style,
+  .changeRow input,
+  .qr_code,
+  textarea {
+    font-size: 15px;
+  }
+  .btn_style {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 400px) and (min-width: 321px) {
+  .content,
+  .container,
+  .input_style,
+  .changeRow input,
+  .qr_code,
+  textarea {
+    font-size: 16px;
+  }
+  .btn_style {
+    font-size: 19px;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .content,
+  .container,
+  .input_style,
+  .changeRow input,
+  .qr_code,
+  textarea {
+    font-size: 18px;
+  }
+  .btn_style {
+    font-size: 20px;
+  }
+}
+  input::-webkit-input-placeholder {
+            color: #fff; /* WebKit browsers */
+            font-size: 0.14rem;
+        }
+
+        input:-moz-placeholder {
+            color: #fff; /* Mozilla Firefox 4 to 18 */
+        }
+
+        input::-moz-placeholder {
+            color: #fff; /* Mozilla Firefox 19+ */
+        }
+
+        input:-ms-input-placeholder {
+            color: #fff; /* Internet Explorer 10+ */
+        }
+html {
+  font-size: 100px;
+  height: 100%;
+}
+body {
+  width: 6.4rem;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.padding_style {
+  width: 6.4rem;
+  height: 100%;
+  overflow-x: hidden;
+  padding: 0.42rem 0.42rem 0.64rem;
+  background: #3168a2 url("../imgs/web_bg.png") repeat-x;
+  position: relative;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -ms-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+
+.content {
+  background: url("../imgs/content_bg.png");
+}
+
+.page_logo {
+  width: 2.05rem;
+  height: 1.11rem;
+  margin: -0.05rem auto 0.2rem;
+  background: url("../imgs/logo.png") center center;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -ms-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.login_box{min-height: 3.61rem;padding: 0.4rem;position:relative;z-index:20;}
+.login_input{margin-top: 0.2rem;}
+
+.input_style{width: 4.76rem;height: 0.8rem;padding: 0 0.2rem;text-align: center;color: #fff;background-color: rgba(255,255,255,0.23);-webkit-border-radius: 3px;-moz-border-radius: 3px;-ms-border-radius: 3px;border-radius: 3px;outline: none;}
+.input_style:focus{background-color: #31699e;}
+
+.login_a{margin: 0.2rem auto;}
+.login_a a{color: #fff;text-decoration: underline;font-size:0.14rem}
+
+
+.btn{width: 4.76rem;height: 0.84rem;color: #fff;background: none; border: 2px #fdfdfd solid;font-family: 'Microsoft Yahei', sans-serif; -webkit-border-radius: 4px;-moz-border-radius: 4px;-ms-border-radius: 4px;border-radius: 4px;margin-bottom: 0.2rem;}
+
+
+
+
+</style>

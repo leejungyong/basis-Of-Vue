@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <section id="section">
+            <nav id="choose">
+                你的选择
+                <mark v-for="item,key in choose" 
+                @click="remove(key)">{{item}}</mark>
+            </nav>
+            <ul>
+                <li v-for="item,index in dataList"> {{item.title}}：
+                    <a 
+                    v-for="option,i in item.list"
+                     @click="addChoose(option,index,i)"
+                     :class="{active:item.index===i}">
+                     {{option}}</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <script>
+ let dataList= [
+                    {
+                    title:'品牌',
+                    list:['苹果','小米','华为','锤子','vivo','OPPO','360','乐视','中兴','索尼']
+                },
+                 {
+                    title:'尺寸',
+                    list:['3.0英寸以下','3.0-3.9英寸','4.0-4.5英寸','4.6-4.9英寸','5.0-5.5英寸','6.0英寸以上']
+                  },
+                  {
+                    title:'系统',
+                    list:['安卓（Android）','苹果（IOS）','微软（WindowsPhone）','无','其他']
+                  },
+                  {
+                    title:'网络',
+                    list:['联通3G','双卡单4G','双卡双4G','联通4G','电信4G','移动4G']
+                  },
+        ];
+        //需要处理data
+        dataList.forEach(item => item.index=-1);
+    new Vue({
+        el:'#app',
+        data () {
+            return {
+               dataList,
+                choose:{},  //记录选中的标签
+            }
+        },
+        methods: {
+            addChoose(option,index,i){
+                //这样给对象添加属性并不会响应
+               // this.choose[index]=option;
+               this.$set(this.choose,index,option);
+                this.dataList[index].index=i;
+            },
+            remove(key){
+                //删除对象属性
+                this.$delete(this.choose,key);
+                this.dataList[key].index=-1;
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html> 
+
+<style>
+    .active{
+        color: aqua;
+    }
+
+    #app{
+        width: 700px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('./imgs/timg.jpg');
+        background-size: 100% 100%;
+        opacity: 0.85;
+    }
+    section{
+        background: white;
+        opacity: 0.8;
+    }
+    nav{
+        background: #deeced;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    mark{
+       background: aqua;
+       margin-left: 10px;
+    }
+    a{
+        margin-right: 10px;
+    }
+</style>
+
+<!--
+   筛选商品 ：data中对象属性的添加与删除
+    1.实现每一行只能选择一个：
+        先给获得的数据中每个对象添加一个index属性，
+        设置choose()记录选中的标签，
+        this.$set(this.choose,index,option)，为choose{}添加属性
+    2.删除选中的标签：
+         this.$delete(this.choose,key);
+    3.改变样式：
+        通过判断index===i;
+
+
+    //调用Vue静态方法set
+    //语法：Vue.set(target,prop,value)
+    //Vue.set(vm.miaov,'ketang','我是新加的');
+     
+    //调用实例上的方法，$set
+   // vm.$set(vm.miaov,'ketang','我是新加的')
+
+    //改写属性的值，重新赋值
+    //vm.miaov={ketang:'新的'}
+  // vm.miaov= Object.assign({},vm.miaov,{ketang:'新的'});
+-->

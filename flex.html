@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+</head>
+<body>
+    <div class="outer">
+        <div class="demo"> 
+            <div class="inner">
+                <p>testtest</p>
+            </div>
+        </div>
+        <div>
+            <ul class="nav">
+                <li>音乐</li>
+                <li>影视</li>
+                <li>旅游</li>
+                <li>美食</li>
+                <li>摄影</li>
+            </ul>
+        </div>
+        <div class="box">
+            <div class="left"> </div>
+            <div class="right">
+                <p>IPhone XS hhhhhhhh</p>
+                <span>总人数</span>
+                <span>剩余人数</span>
+                <div class="button">立即参与</div>
+            </div>
+        </div><br>
+
+        <div class="dengfen">
+            <span>1/4</span>
+            <span>1/4</span>
+            <span>1/4</span>
+            <span>1/4</span>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    .demo{
+        width: 500px;
+        height: 300px;
+        border: 1px solid saddlebrown;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .inner{
+        border: 1px solid black;
+    }
+
+    .nav {
+        display: flex;
+        list-style: none;
+      
+    }
+    .nav li{
+        background-color:cornflowerblue;
+        color: white;
+        flex: 0.2;
+        text-align: center;
+        line-height: 50px;
+        border-right: 1px solid white;
+    }
+.box{
+   display: flex;
+   justify-content: space-around;/*各项周围留白*/;
+   border: 1px solid black;
+}
+
+.left{
+    width: 200px;
+    height: 200px;
+    background: darkgray; 
+    flex: none;
+}
+.right{
+    width: 380px;
+    height: 200px;
+    flex: none;}   
+.button{
+    width: 80px;
+    line-height: 30px;
+    text-align:center;
+    background: cornflowerblue;
+    margin-top: 10px;
+} 
+
+.dengfen {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    padding: 10px 5px;
+}
+.dengfen span{
+    width: 40px;
+    height: 25px;
+    background-color: darkgrey; 
+    flex: 0.2;
+    text-align: center;
+}
+
+</style>

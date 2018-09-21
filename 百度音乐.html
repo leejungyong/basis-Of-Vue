@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度音乐</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+       <ul class="topline">
+           <li>
+               <span><input type="checkbox" v-model="isCheckedAll"></span>
+               <span >全选</span> 
+               <span>歌单</span>
+               <span>歌手</span>
+               <span>专辑</span>
+            </li>
+       </ul>
+       <ul class="list">
+           <li v-for="item in dataList">
+               <span><input type="checkbox" v-model="item.checked"></span>
+               <span>{{item.song}}</span>
+               <span>{{item.name}}</span>
+               <span>{{item.album}}</span>
+           </li>
+       </ul>
+       <ul>
+           <li>
+               <span>统计：</span>
+               <span>选中{{selectedSongsLen}}首歌</span>
+               <span>专辑{{album}}</span>
+           </li>
+       </ul>
+      
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                 dataList:[
+                     {
+                         id:Date.now+Math.random(),
+                        name:'王菲',
+                        song:'人间',
+                        checked:false,
+                        album:10                        
+                     },
+                     {
+                         id:Date.now+Math.random(),
+                        name:'王菲',
+                        song:'流年',
+                        checked:false,
+                        album:10                        
+                     },
+                     {
+                         id:Date.now+Math.random(),
+                        name:'王菲',
+                        song:'百年孤寂',
+                        checked:false,
+                        album:10                        
+                     }
+                 ]
+                }
+            },
+
+            computed: {
+                isCheckedAll:{
+                    get(){
+                             let a= this.dataList.every(function(item){
+                        return item.checked;
+                    })
+                    return a;
+                },
+                    set(newValue){
+                        this.dataList.forEach(item => {
+                            item.checked=newValue;
+                        });
+                    }
+                    },
+                    //当数组中每一项都满足条件，返回true，只要有一项不满足，就返回false
+            
+                selectedSongsLen(){
+                   return this.dataList.filter(item=>item.checked).length;
+                },
+                album(){
+                    return this.dataList.filter(item=>item.checked).reduce((n,item)=>
+                    n+item.album,0);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<style>
+    ul{
+        list-style: none;
+    }
+    .list li{
+        margin-top: 10px;
+    }
+</style>
+
+<!--
+    计算属性的问题:实现复选框，全选框的响应
+    1.全选框v-model一个计算属性，该计算属性判断了一些复选框的value值，是否全部为true（用every方法实现）
+        当全部为true时，全选框的value值为true；
+    2.点击全选框时，需要为计算属性设置值：
+        ****计算属性为函数时默认为get函数，无法设置值，需要将计算属性改为对象，并在其中定义get，set函数
+    3.every(),filter(),reduce()累加
+-->

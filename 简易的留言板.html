@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <input type="button"
+         value="发送" 
+         v-on:click="submit">
+        <ul>
+            <li v-for="item in list">
+                {{item.title}}</li>
+        </ul>
+
+        <p>对象的响应数据变化</p>
+        <p>{{miaov.ketang}}</p>
+
+        <p>数组的响应数据变化</p>
+        <p>{{lists}}</p>
+    </div>
+    <script>
+       let vm= new Vue({
+            el:'#app',
+            data () {
+                return {
+                    list:[ {
+                    id:123,
+                    title:'开心'
+                },],
+
+                    val:'',
+                    miaov:{},
+                    lists:[1,2,3],
+                }
+            },
+            methods: {
+                submit(){
+                    this.list.push({
+                        id:Date.now,
+                        title:this.val
+                    });
+                    this.val='';
+                }
+            }
+        })
+    //调用Vue静态方法set
+    //语法：Vue.set(target,prop,value)
+    //Vue.set(vm.miaov,'ketang','我是新加的');
+     
+    //调用实例上的方法，$set
+   // vm.$set(vm.miaov,'ketang','我是新加的')
+
+    //改写属性的值，重新赋值
+    //vm.miaov={ketang:'新的'}
+  // vm.miaov= Object.assign({},vm.miaov,{ketang:'新的'});
+        
+        //提供观察数组的变异方法
+        vm.lists.push(1000);
+    </script>
+</body>
+</html>

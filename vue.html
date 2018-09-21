@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" v-on:input="inputChange">
+        <p>{{msg}}</p>
+        <br>
+        <input type="text" v-model="msg2">
+        <p>{{msg2}}</p>
+        <input type="checkbox" v-model="checked">
+        <p v-bind:title="[1,2,3].map(item=>item*2)">{{[1,2,3].map(item=>item*2)}}</p> 
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+       var vm= new Vue({
+            el:'#app',
+            data () {
+                return {
+                    msg:'hello',
+                    msg2:'world',
+                    checked:true,
+                    list:[11,22,33],    
+                    obj:{             //对象遍历，key值是属性名
+                        a:1,
+                        b:2,
+                        c:3,
+                    }
+                }
+            },
+            methods: {
+            inputChange(ev){
+                console.log(ev.target.value);
+                this.msg=ev.target.value;
+            }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p v-text="message"></p>
+        <p v-html="message2"></p>
+        <div v-cloak></div>
+        <p v-once>{{message}}</p>
+    </div>
+    <script>
+    var vm=new Vue({
+
+        el:'#app',
+        data () {
+            return {
+               message:'hello' ,
+               message2:' <div>hello</div>'
+            }
+        }
+    })
+    </script>
+</body>
+</html>
+
+<!--
+     1. v-text避免出现数据太多导致刷新时出现双花括号
+        <p v-text="message"></p>
+     2.v-html html必须是可靠的，更新innerHTML的内容，添加一个标签形式的内容
+     3.v-cloak:
+        还没渲染之前隐藏小胡子语法；
+        标签添加属性v-cloak->添加style [v-cloak]{display:none}
+    4.v-once:
+         只渲染一次，随后数据改变将不再重新渲染，视为静态内容，用于优化更新性能
+
+-->
